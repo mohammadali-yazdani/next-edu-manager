@@ -6,7 +6,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "School Management Dashboard",
   description:
     "A comprehensive dashboard for managing school operations and academics using Next.js.",
