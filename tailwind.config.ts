@@ -11,6 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+
+        // CUSTOM COLORS
+        eduSky: "#C3EBFA",
+        eduSkyLight: "#EDF9FD",
+        eduPurple: "#CFCEFF",
+        eduPurpleLight: "#F1F0FF",
+        eduYellow: "#FAE27C",
+        eduYellowLight: "#FEFCEB",
       },
     },
   },
