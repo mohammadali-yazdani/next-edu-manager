@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.edu-calendar.rmdp-wrapper {
+  box-shadow: none;
+}
+
+.edu-calendar.rmdp-wrapper,
+.edu-calendar.rmdp-wrapper .rmdp-calendar,
+.edu-calendar.rmdp-wrapper .rmdp-day-picker > div {
+  width: 100%;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-week .rmdp-day {
+  width: 100%;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-week .rmdp-day .sd {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-arrow-container:hover {
+  background-color: inherit;
+  box-shadow: none;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-arrow-container:hover i {
+  border-color: currentColor;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-day.rmdp-selected span:not(.highlight) {
+  @apply bg-eduSky text-black;
+}
+
+.edu-calendar.rmdp-wrapper .rmdp-day.rmdp-today span {
+  @apply bg-eduYellow text-black;
+}
+
+.rmdp-header-values {
+  font-weight: 600;
+}
