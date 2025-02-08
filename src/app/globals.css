@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ! React Multi Date Calendar */
 .edu-calendar.rmdp-wrapper {
   box-shadow: none;
 }
@@ -40,4 +41,118 @@
 
 .rmdp-header-values {
   font-weight: 600;
+}
+
+/* ! FullCalendar */
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.fc-toolbar-chunk .fc-toolbar-title {
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.fc-toolbar-chunk .fc-button {
+  border-radius: 0;
+  font-size: 13px;
+}
+
+/* * customize buttons */
+.fc .fc-button-primary:focus,
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled):active:focus {
+  box-shadow: none;
+}
+
+.fc .fc-button {
+  padding: 0.375rem 1rem;
+  border: none;
+  /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); */
+  background-color: #f1f0ff;
+  color: #000;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #f1f0ff;
+  color: inherit;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: #dbdafe;
+  color: inherit;
+}
+
+.fc-toolbar-chunk .fc-button:first-of-type {
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+.fc-toolbar-chunk .fc-button:last-of-type {
+  border-radius: 0 0.25em 0.25em 0;
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  margin-left: 2px;
+}
+
+/* * customize buttons */
+
+:root {
+  --fc-border-color: #eee;
+  --fc-event-text-color: #000;
+}
+
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid thead {
+  background-color: #f7fdff;
+}
+.fc-timegrid-slot.fc-timegrid-slot-label {
+  font-size: 12px;
+}
+.fc-timegrid-slot.fc-timegrid-slot-label .fc-timegrid-slot-label-frame {
+  padding: 0 20px;
+}
+.fc-timegrid-slot.fc-timegrid-slot-lane {
+  font-size: 14px;
+}
+.fc-event {
+  border: none;
+}
+.fc-timegrid-event-harness:nth-child(1) .fc-v-event {
+  background-color: #e2f8ff;
+}
+
+.fc-timegrid-event-harness:nth-child(2) .fc-v-event {
+  background-color: #fefce8;
+}
+
+.fc-timegrid-event-harness:nth-child(3) .fc-v-event {
+  background-color: #f2f1ff;
+}
+
+.fc-timegrid-event-harness:nth-child(4) .fc-v-event {
+  background-color: #fdf2fb;
+}
+
+.fc-timegrid-event-harness:nth-child(5) .fc-v-event {
+  background-color: #e2f8ff;
+}
+
+.fc-timegrid-event-harness:nth-child(6) .fc-v-event {
+  background-color: #fefce8;
+}
+
+.fc-timegrid-event-harness:nth-child(7) .fc-v-event {
+  background-color: #f2f1ff;
+}
+
+.fc-timegrid-event-harness:nth-child(8) .fc-v-event {
+  background-color: #fdf2fb;
+}
+
+.fc-timegrid-event .fc-event-time {
+  color: gray;
 }
