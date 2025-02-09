@@ -17,8 +17,8 @@ export default function BigCalendar() {
         start: "prev next",
         end: "title timeGridWeek timeGridDay",
       }}
-      height={1000}
-      contentHeight={1000}
+      height={800}
+      contentHeight={800}
       expandRows={true}
     />
   );
