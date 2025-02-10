@@ -4,7 +4,7 @@ import TableSearch from "@/components/TableSearch";
 import { role, teachersData } from "@/lib/data";
 import {
   ArrowDownWideNarrow,
-  Delete,
+  Trash2,
   Plus,
   SlidersHorizontal,
   View,
@@ -78,7 +78,7 @@ const TeachersListPage = () => {
           <div className="flex flex-col">
             <h3 className="font-semibold">{item.name}</h3>
             {item.email && (
-              <p className="text-xs text-gray-500">{item.email}</p>
+              <p className="text-xs text-gray-500">{item?.email}</p>
             )}
           </div>
         </div>
@@ -92,12 +92,12 @@ const TeachersListPage = () => {
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`}>
             <button className="size-7 grid place-items-center rounded-full bg-eduSky">
-              <View size={16} />
+              <View color="white" size={16} />
             </button>
           </Link>
           {role === "admin" && (
             <button className="size-7 grid place-items-center rounded-full bg-eduPurple">
-              <Delete size={16} />
+              <Trash2 color="white" size={16} />
             </button>
           )}
         </div>
@@ -119,9 +119,11 @@ const TeachersListPage = () => {
             <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
               <ArrowDownWideNarrow size={14} />
             </button>
-            <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
-              <Plus size={14} />
-            </button>
+            {role === "admin" && (
+              <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
+                <Plus size={14} />
+              </button>
+            )}
           </div>
         </div>
       </div>
