@@ -22,7 +22,7 @@ export default function DashboardLayout({
         </aside>
 
         {/* RIGHT - Content */}
-        <div className="bg-[#F7F8FA] min-h-screen flex flex-col">
+        <div className="bg-[#F7F8FA] min-h-screen overflow-x-hidden flex flex-col">
           <Navbar />
           <div className="p-4">{children}</div>
         </div>
