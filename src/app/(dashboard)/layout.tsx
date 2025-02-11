@@ -5,27 +5,27 @@ import Link from "next/link";
 
 export default function DashboardLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="h-screen flex">
-      {/* LEFT */}
-      <div className="w-[14%] md:w-[8%] lg:w-[18%] xl:w-[14%]= p-4">
-        <Link
-          href="/"
-          className="flex items-center justify-center lg:justify-start gap-2"
-        >
-          <Image src="/logo.png" alt="logo" width={32} height={32} />
-          <span className="hidden lg:block font-bold">EDU Manager</span>
-        </Link>
+    <div className="min-h-screen relative">
+      <div className="grid grid-cols-[14%_auto] md:grid-cols-[8%_auto] lg:grid-cols-[18%_auto] xl:grid-cols-[14%_auto]">
+        {/* LEFT - Sidebar */}
+        <aside className="p-4 bg-white max-h-screen overflow-y-auto scrollbar-thin sticky top-0 self-start">
+          <Link
+            href="/"
+            className="flex items-center justify-center lg:justify-start gap-2"
+          >
+            <Image src="/logo.png" alt="logo" width={32} height={32} />
+            <span className="hidden lg:block font-bold">EDU Manager</span>
+          </Link>
+          <Menu />
+        </aside>
 
-        <Menu />
-      </div>
-      {/* RIGHT */}
-      <div className="w-[86%] md:w-[92%] lg:w-[82%] xl:w-[86%] bg-[#F7F8FA] overflow-auto flex flex-col">
-        <Navbar />
-        {children}
+        {/* RIGHT - Content */}
+        <div className="bg-[#F7F8FA] min-h-screen flex flex-col">
+          <Navbar />
+          <div className="p-4">{children}</div>
+        </div>
       </div>
     </div>
   );
