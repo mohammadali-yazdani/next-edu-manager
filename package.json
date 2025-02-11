@@ -20,7 +20,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-multi-date-picker": "^4.5.2",
-    "recharts": "^2.15.1"
+    "recharts": "^2.15.1",
+    "tailwind-scrollbar": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
