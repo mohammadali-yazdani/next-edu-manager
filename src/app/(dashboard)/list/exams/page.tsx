@@ -1,15 +1,9 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, examsData } from "@/lib/data";
-import {
-  ArrowDownWideNarrow,
-  Trash2,
-  Edit,
-  Plus,
-  SlidersHorizontal,
-} from "lucide-react";
-import Link from "next/link";
+import { ArrowDownWideNarrow, SlidersHorizontal } from "lucide-react";
 
 interface Exam {
   id: number;
@@ -60,15 +54,11 @@ const ExamsListPage = () => {
       <td className="hidden md:table-cell">{item.date}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="size-7 grid place-items-center rounded-full bg-eduSky">
-              <Edit color="white" size={16} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button className="size-7 grid place-items-center rounded-full bg-eduPurple">
-              <Trash2 color="white" size={16} />
-            </button>
+            <>
+              <FormModal table="exam" type="update" data={item} />
+              <FormModal table="exam" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -90,9 +80,7 @@ const ExamsListPage = () => {
               <ArrowDownWideNarrow size={14} />
             </button>
             {role === "admin" && (
-              <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
-                <Plus size={14} />
-              </button>
+              <FormModal table="exam" type="create" color="#000" />
             )}
           </div>
         </div>

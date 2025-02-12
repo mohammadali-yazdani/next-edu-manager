@@ -1,14 +1,9 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, teachersData } from "@/lib/data";
-import {
-  ArrowDownWideNarrow,
-  Trash2,
-  Plus,
-  SlidersHorizontal,
-  View,
-} from "lucide-react";
+import { ArrowDownWideNarrow, SlidersHorizontal, View } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -96,9 +91,7 @@ const TeachersListPage = () => {
             </button>
           </Link>
           {role === "admin" && (
-            <button className="size-7 grid place-items-center rounded-full bg-eduPurple">
-              <Trash2 color="white" size={16} />
-            </button>
+            <FormModal table="teacher" type="delete" id={item.id} />
           )}
         </div>
       </td>
@@ -120,9 +113,10 @@ const TeachersListPage = () => {
               <ArrowDownWideNarrow size={14} />
             </button>
             {role === "admin" && (
-              <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
-                <Plus size={14} />
-              </button>
+              // <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
+              //   <Plus size={14} />
+              // </button>
+              <FormModal table="teacher" type="create" color="#000" />
             )}
           </div>
         </div>

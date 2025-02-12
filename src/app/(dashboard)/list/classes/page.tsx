@@ -1,15 +1,9 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, classesData } from "@/lib/data";
-import {
-  ArrowDownWideNarrow,
-  Edit,
-  Plus,
-  SlidersHorizontal,
-  View,
-} from "lucide-react";
-import Link from "next/link";
+import { ArrowDownWideNarrow, SlidersHorizontal } from "lucide-react";
 
 interface Class {
   id: number;
@@ -61,15 +55,11 @@ const ClassesListPage = () => {
       <td className="hidden md:table-cell">{item.supervisor}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="size-7 grid place-items-center rounded-full bg-eduSky">
-              <View color="white" size={16} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button className="size-7 grid place-items-center rounded-full bg-eduPurple">
-              <Edit color="white" size={16} />
-            </button>
+            <>
+              <FormModal table="class" type="update" data={item} />
+              <FormModal table="class" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -91,9 +81,7 @@ const ClassesListPage = () => {
               <ArrowDownWideNarrow size={14} />
             </button>
             {role === "admin" && (
-              <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
-                <Plus size={14} />
-              </button>
+              <FormModal table="class" type="create" color="#000" />
             )}
           </div>
         </div>

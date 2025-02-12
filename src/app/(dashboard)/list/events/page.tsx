@@ -1,15 +1,9 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, eventsData } from "@/lib/data";
-import {
-  ArrowDownWideNarrow,
-  Trash2,
-  Edit,
-  Plus,
-  SlidersHorizontal,
-} from "lucide-react";
-import Link from "next/link";
+import { ArrowDownWideNarrow, SlidersHorizontal } from "lucide-react";
 
 interface Event {
   id: number;
@@ -67,15 +61,11 @@ const EventsListPage = () => {
       <td className="hidden md:table-cell">{item.endTime}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="size-7 grid place-items-center rounded-full bg-eduSky">
-              <Edit color="white" size={16} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button className="size-7 grid place-items-center rounded-full bg-eduPurple">
-              <Trash2 color="white" size={16} />
-            </button>
+            <>
+              <FormModal table="event" type="update" data={item} />
+              <FormModal table="event" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -97,9 +87,7 @@ const EventsListPage = () => {
               <ArrowDownWideNarrow size={14} />
             </button>
             {role === "admin" && (
-              <button className="size-8 grid place-items-center rounded-full bg-eduYellow">
-                <Plus size={14} />
-              </button>
+              <FormModal table="event" type="create" color="#000" />
             )}
           </div>
         </div>
