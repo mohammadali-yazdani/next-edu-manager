@@ -1,13 +1,79 @@
 "use client";
 
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { useState } from "react";
-import TeacherForm from "./forms/Teacher";
+import dynamic from "next/dynamic";
+import { JSX, useState } from "react";
+// import TeacherForm from "./forms/Teacher";
+// import StudentForm from "./forms/Student";
+
+// ! Optimize Import
+const TeacherForm = dynamic(() => import("./forms/Teacher"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+const StudentForm = dynamic(() => import("./forms/Student"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+const AssignmentForm = dynamic(() => import("./forms/Assignment"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const AnnouncementForm = dynamic(() => import("./forms/Announcement"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const AttendanceForm = dynamic(() => import("./forms/Attendance"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const ClassForm = dynamic(() => import("./forms/Class"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const EventForm = dynamic(() => import("./forms/Event"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const ExamForm = dynamic(() => import("./forms/Exam"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const LessonForm = dynamic(() => import("./forms/Lesson"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const ParentForm = dynamic(() => import("./forms/Parent"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const ResultForm = dynamic(() => import("./forms/Result"), {
+  loading: () => <h1>Loading ...</h1>,
+});
+
+const SubjectForm = dynamic(() => import("./forms/Subject"), {
+  loading: () => <h1>Loading ...</h1>,
+});
 
 const iconMap: Record<string, IconName> = {
   create: "plus",
   update: "edit",
   delete: "trash-2",
+};
+
+const forms: {
+  [key: string]: (type: "create" | "update", data?: unknown) => JSX.Element;
+} = {
+  teacher: (type, data) => <TeacherForm type={type} data={data} />,
+  student: (type, data) => <StudentForm type={type} data={data} />,
+  assignment: (type, data) => <AssignmentForm type={type} data={data} />,
+  announcement: (type, data) => <AnnouncementForm type={type} data={data} />,
+  attendance: (type, data) => <AttendanceForm type={type} data={data} />,
+  class: (type, data) => <ClassForm type={type} data={data} />,
+  event: (type, data) => <EventForm type={type} data={data} />,
+  exam: (type, data) => <ExamForm type={type} data={data} />,
+  lesson: (type, data) => <LessonForm type={type} data={data} />,
+  parent: (type, data) => <ParentForm type={type} data={data} />,
+  result: (type, data) => <ResultForm type={type} data={data} />,
+  subject: (type, data) => <SubjectForm type={type} data={data} />,
 };
 
 const FormModal = ({
@@ -68,8 +134,10 @@ const FormModal = ({
           </button>
         </div>
       </form>
+    ) : type === "create" || type === "update" ? (
+      forms[table](type, data)
     ) : (
-      <TeacherForm data={""} type="create" />
+      "Form not found"
     );
   };
 
@@ -84,7 +152,7 @@ const FormModal = ({
       </button>
 
       {open && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
           <div
             className="bg-white rounded-lg shadow-lg w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-6 transition-transform transform scale-100 opacity-100 animate-fadeIn
 "
